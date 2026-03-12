@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-eks": "^3.1007.0",
+    "couchbase": "^4.6.1",
     "jose": "^6.2.1",
     "next": "16.1.6",
     "react": "19.2.3",
