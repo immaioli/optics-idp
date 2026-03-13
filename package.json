@@ -16,6 +16,7 @@
     ]
   },
   "dependencies": {
+    "@aws-sdk/client-bedrock-runtime": "^3.1007.0",
     "@aws-sdk/client-eks": "^3.1007.0",
     "couchbase": "^4.6.1",
     "jose": "^6.2.1",
