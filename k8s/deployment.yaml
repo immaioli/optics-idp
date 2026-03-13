@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metada:
+  name: optics-idp-portal
+  namaspace: platform-system
+  labels: 
+    app: optics-idp-portal
+spec:
+  replicas: 3
+  selector: 
+    matchLabels:
+      app: optics-idp-portal
+  template:
+    metada:
+      labels:
+        app: optics-idp-portal
+    spec:
+      containers:
+      - name: web
+      # In a real CI/CD pipeline, the 'latest' tag is replced by the commit SHA
+      image: <aws-account-id>.dkr.ecr.us-east-1.amazonaws.com/optics-idp-portal:latest
+      imagePullPolicy: Always
+      ports: 
+      - containerPort: 3000
+      resources:
+        requests: 
+          cpu: "250m"
+          memory: "512Mi"
+        limits:
+          cpu: "500m"
+          memory: "1Gi"
+      env:
+      - name: NODE_ENV
+        value: "production"
+      # Secrets should ideally be managed via AWS Secrets Manager / External Secrets Operator
+      - name: JWT_SECRET
+        valueFrom: 
+          secretKeyRef:
+            name: idp-secrets
+            key: jwt-secret
