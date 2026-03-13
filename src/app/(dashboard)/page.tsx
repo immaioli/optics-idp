@@ -1,4 +1,5 @@
 import { ClusterHealth } from "@/components/infrastructure/ClusterHealth";
+import { SREAssistant } from "@/components/ai/SREAssistant";
 
 export const metadata = {
   title: "Infrastructure Overview | Internal Developer Portal",
@@ -36,6 +37,14 @@ export default function DashboardOverviewPage() {
             Cluster Health Status
           </h2>
           <ClusterHealth />
+        </section>
+
+        {/* AI SRE Assistant Section */}
+        <section aria-labelledby="ai-assistant-heading" className="mt-8">
+          <h2 id="ai-assistant-heading" className="sr-only">
+            AI SRE Assistant
+          </h2>
+          <SREAssistant />
         </section>
       </div>
     </main>
